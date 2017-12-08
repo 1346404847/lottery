@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-admin',
     'basePath' => dirname(__DIR__),
-    'controllerNamespace' => 'backend\controllers',
+    'controllerNamespace' => 'admin\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
@@ -23,7 +23,7 @@ return [
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
+            'name' => 'advanced-admin',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -37,14 +37,16 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<controller:\w+\-\w+|\w+>/<action:\w+\-\w+|\w+>'=>'<controller>/<action>',
+                '<module:\w+\-\w+|\w+>/<controller:\w+\-\w+|\w+>/<action:\w+\-\w+|\w+>'=>'<module>/<controller>/<action>',
+                '/'=>'login/login',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
